@@ -26,6 +26,45 @@ function startNewGame() { // starts one round of the game
             continue; // goes to next loop
         }
 
+        if (userGuess < 1 || userGuess > 100) {
+            alert("Please Enter a Number 1-100"); 
+            continue;
+        }
+
+        guessCount = guessCount + 1; // makes guess count work
+        if (userGuess === randomNumber) {
+            alert ("Congrats! You Guessed the Number in"  +  guessCount  +  "guesses");
+            guessedCorrectly = true; // stops game loop
+
+            scoreHistory.push(guessCount); // adds number of guesses to score history
+            let totalGuesses = 0;
+            for (let i = 0; i < scoreHistory.length; i++) {
+                totalGuesses = totalGuesses + scoreHistory[i];
+            }
+
+            let averageGuesses = totalGuesses / scoreHistory.length;
+            let roundedAverage = averageGuesses.toFixed(1); // I looked up the .toFixed(1), it makes it so the number rounds to 1 decimal spot
+
+            alert("Your Average Guesses Per Round:" + roundedAverage);
+
+            let playAgain = prompt("Would You Like to Play Again? Type Yes or No:"); 
+
+            if (playAgain !== null) {
+                playAgain = playAgain.toLowerCase();
+            }
+
+            if (playAgain === "yes" || playAgain === "y") {
+                startNewGame(); 
+            } else {
+                alert("Thanks For Playing"); 
+            }
+
+        } else if (userGuess > randomNumber) {
+            alert("Guess Too High. Try Again");
+        } else if (userGuess< randomNumber) {
+            alert("Guess Too Low. Try Again"); 
+        }
+        }
     }
 
-}
+startNewGame(); 
