@@ -20,6 +20,7 @@ function startNewGame() { // starts one round of the game
             alert("Game Cancelled");
             return;
         }
+
         let userGuess = Number(userInput); // makes input a number
         if (isNaN(userGuess)) { // I looked this up, NaN means not a number
             alert("Not a number. Please Enter a Number")
@@ -64,6 +65,7 @@ function startNewGame() { // starts one round of the game
         } else if (userGuess< randomNumber) {
             alert("Guess Too Low. Try Again"); 
         }
+        
         }
     }
 
